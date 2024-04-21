@@ -28,8 +28,10 @@
       "@components/*": ["app/components/*"],
       "@common-components/*": ["app/components/common/*"],
       "@services/*": ["app/core/services/*"],
+      "@youtube-services/*": ["app/core/services/youtube-data-api-v3/*"],
       "@models/*": ["app/core/models/*"],
       "@constants/*": ["app/core/constants/*"],
+      "@interceptor/*": ["app/core/interceptor/*"],
     },
   },
   "angularCompilerOptions": {
