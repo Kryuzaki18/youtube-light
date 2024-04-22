@@ -1,28 +1,45 @@
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 
-import { apiBaseUrl } from '@constants/youtube-data-api-v3';
+import { apiUrl } from '@constants/youtube-data-api-v3';
 import { HttpService } from '@services/http/http.service';
+import { Video } from '@models/videos';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class VideosService {
+  constructor(private httpService: HttpService) {}
 
-  constructor(private httpService: HttpService) { }
+  getVideosByPopular(maxResults: number = 10): Observable<Video> {
+    const data = {
+      part: 'snippet, player, status, statistics',
+      chart: 'mostPopular',
+      regionCode: 'ph',
+      maxResults,
+    };
 
-  getVideosForChanel(channelId: string, maxResults: number = 10): Observable<Object> {
-    const params = {
-      channelId,
-      order: 'date',
-      part: 'snippet',
-      type: 'video,id',
-      maxResults
-    }
-    let url = `${apiBaseUrl}`;
-    return this.httpService.get(url)
-      .pipe(map((res) => {
+    return this.httpService.get$(apiUrl.videos, data).pipe(
+      map((res: any) => {
         return res;
-      }))
+      })
+    );
+  }
+
+  getVideosForChannel(
+    channelId: string,
+    maxResults: number = 10
+  ): Observable<Object> {
+    const data = {
+      channelId,
+      part: 'snippet',
+      maxResults,
+    };
+
+    return this.httpService.get$(apiUrl.videos, data).pipe(
+      map((res) => {
+        return res;
+      })
+    );
   }
 }

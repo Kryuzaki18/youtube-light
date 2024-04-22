@@ -1,27 +1,72 @@
-<header class="flex justify-between items-center p-5">
-  <span
-    class="material-icons text-slate-950 dark:text-slate-300 cursor-pointer"
-    (click)="toggleSidebar()"
-  >
-    menu
-  </span>
+<header class="sticky top-0 bg-slate-50 dark:bg-black shadow-md">
+  <div class="flex justify-between items-center py-2 w-[960px] mx-auto">
+    <nav>
+      <ul class="flex items-center gap-2">
+        <li
+          class="cursor-pointer px-3 py-1 bg-red-700 text-white rounded-full text-sm bg-slate-200 flex items-center gap-1 "
+        >
+          <span class="material-symbols-outlined text-[20px]"
+            >local_fire_department</span
+          >
+          <span>Trending</span>
+        </li>
 
-  <div>
-    <input
-      type="text"
-      placeholder="Search"
-      class="p-2 border border-gray-300 rounded-full w-96 max-w-xl text-center select-none"
-    />
-  </div>
+        <li
+          class="cursor-pointer px-3 py-1 bg-zinc-500 text-white rounded-full text-sm flex items-center gap-1 hover:bg-red-700"
+        >
+          <span class="material-symbols-outlined text-[20px]">
+            subscriptions
+          </span>
+          <span>Subscriptions</span>
+        </li>
 
-  <div>
-    <button
-      (click)="toggleTheme()"
-      class="flex justify-center items-center text-slate-950 dark:text-slate-300 rounded p-1"
-    >
-      <span class="material-icons">
-        {{ isDarkActiveTheme() ? "dark_mode" : "light_mode" }}
+        <li
+          class="cursor-pointer px-3 py-1 bg-zinc-500 text-white rounded-full text-sm flex items-center gap-1 hover:bg-red-700"
+        >
+          <span class="material-symbols-outlined text-[20px]">
+            account_box
+          </span>
+          <span>Channels</span>
+        </li>
+
+        <li
+          class="cursor-pointer px-3 py-1 bg-zinc-500 text-white rounded-full text-sm flex items-center gap-1 hover:bg-red-700"
+        >
+          <span class="material-symbols-outlined text-[20px]">
+            playlist_play
+          </span>
+          <span>Playlist</span>
+        </li>
+
+        <li
+          class="cursor-pointer px-3 py-1 bg-zinc-500 text-white rounded-full text-sm flex items-center gap-1 hover:bg-red-700"
+        >
+          <span class="material-symbols-outlined text-[20px]"> history </span>
+          <span>History</span>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="relative w-fit flex">
+      <input
+        type="text"
+        placeholder="Search"
+        class="py-1 rounded-full w-80 max-w-xl text-center select-none border-zinc-500 border-2 pl-5 pr-10"
+      />
+      <span
+        class="material-symbols-outlined absolute right-0 mr-3 mt-[5px] text-zinc-500"
+      >
+        search
       </span>
-    </button>
+    </div>
   </div>
+
+  <button
+    (click)="toggleTheme()"
+    class="dark:text-white absolute right-0 top-0 mt-3 mr-5"
+  >
+    <span class="material-icons">
+      {{ isDarkActiveTheme() ? "dark_mode" : "light_mode" }}
+    </span>
+  </button>
 </header>

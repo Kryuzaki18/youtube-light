@@ -4,7 +4,7 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('@pages/home/home.component').then((mod) => mod.HomeComponent),
+      import('@pages/home/home.component').then((module) => module.HomeComponent),
   },
   { path: '**', redirectTo: '' },
 ];

@@ -1,11 +1,48 @@
+<div class="flex flex-wrap justify-center gap-7 pt-4 pb-7">
+  <div *ngFor="let video of video?.items" class="video">
+   
+    <img
+      [src]="video.snippet?.thumbnails?.medium?.url"
+      [alt]="video.snippet?.channelTitle"
+      class="rounded-lg cursor-pointer hover:border-red-700 border-2 border-transparent"
+    />
 
-<div class="flex flex-wrap">
-    <p-card header="Title">
-        <p-skeleton width="10rem" height="4rem" borderRadius="16px"></p-skeleton>
-    
-        <p class="m-0">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
-            quas!
-        </p>
-    </p-card>
+    <!-- <div [innerHTML]="bypassSecurityTrustHtml(video?.player?.embedHtml!)"></div>
+    <small>{{ video.snippet?.description }}</small>
+  -->
+
+    <div class="my-1">
+      <strong>{{ video.snippet?.channelTitle }}</strong>
+    </div>
+
+    <div class="flex items-center justify-between gap-2">
+      <div class="flex items-center gap-3">
+        <div class="flex items-center gap-1">
+          <span class="material-symbols-outlined text-xs"> visibility </span>
+          <span class="text-xs">
+            {{ video.statistics?.viewCount! | shortNumber }}
+          </span>
+        </div>
+
+        <div class="flex items-center gap-1 text-xs">
+          <span class="material-symbols-outlined text-xs"> thumb_up </span>
+          <span class="text-xs">
+            {{ video.statistics?.likeCount! | shortNumber }}
+          </span>
+        </div>
+
+        <div class="flex items-center gap-1 text-xs">
+          <span class="material-symbols-outlined text-xs"> chat </span>
+          <span class="text-xs">
+            {{ video.statistics?.commentCount! | shortNumber }}
+          </span>
+        </div>
+      </div>
+
+      <span class="text-xs">
+        {{ video.snippet?.publishedAt! | timeAgo }}
+      </span>
+    </div>
+
+  </div>
 </div>
