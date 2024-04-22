@@ -3,46 +3,15 @@
     <nav>
       <ul class="flex items-center gap-2">
         <li
-          class="cursor-pointer px-3 py-1 bg-red-700 text-white rounded-full text-sm bg-slate-200 flex items-center gap-1 "
+          *ngFor="let item of menu"
+          class="cursor-pointer px-3 py-1 text-white rounded-full text-sm flex items-center gap-1 hover:bg-red-700"
+          [ngClass]="item.name === selectedVideo ? 'bg-red-700' : 'bg-zinc-500'"
+          (click)="selectVideo(item)"
         >
           <span class="material-symbols-outlined text-[20px]"
-            >local_fire_department</span
+            >{{item.icon}}</span
           >
-          <span>Trending</span>
-        </li>
-
-        <li
-          class="cursor-pointer px-3 py-1 bg-zinc-500 text-white rounded-full text-sm flex items-center gap-1 hover:bg-red-700"
-        >
-          <span class="material-symbols-outlined text-[20px]">
-            subscriptions
-          </span>
-          <span>Subscriptions</span>
-        </li>
-
-        <li
-          class="cursor-pointer px-3 py-1 bg-zinc-500 text-white rounded-full text-sm flex items-center gap-1 hover:bg-red-700"
-        >
-          <span class="material-symbols-outlined text-[20px]">
-            account_box
-          </span>
-          <span>Channels</span>
-        </li>
-
-        <li
-          class="cursor-pointer px-3 py-1 bg-zinc-500 text-white rounded-full text-sm flex items-center gap-1 hover:bg-red-700"
-        >
-          <span class="material-symbols-outlined text-[20px]">
-            playlist_play
-          </span>
-          <span>Playlist</span>
-        </li>
-
-        <li
-          class="cursor-pointer px-3 py-1 bg-zinc-500 text-white rounded-full text-sm flex items-center gap-1 hover:bg-red-700"
-        >
-          <span class="material-symbols-outlined text-[20px]"> history </span>
-          <span>History</span>
+          <span>{{item.name}}</span>
         </li>
       </ul>
     </nav>
